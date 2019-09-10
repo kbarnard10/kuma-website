@@ -13,6 +13,9 @@ meta:
 testimonialPortraitSrc: /images/matt-klein-cropped@2x.jpg
 testimonialPortraitAlt: Matt Klein
 hideTestimonial: false # change this to `true` if you want to display the testimonial
+
+newsTagline: Come learn and explore Kuma at Kong Summit 2019
+newsLink: https://konghq.com/kong-summit
 ---
 
 <!-- page masthead -->
@@ -67,10 +70,9 @@ Matt Klein,
 Envoy Proxy Creator, Engineer at Lyft
 :::
 
-
 <!-- tabs -->
 ::: slot tabs-section-title
-## Getting Started
+## Get Started In 1 Minute
 :::
 
 ::: slot tab-1-title
@@ -79,7 +81,7 @@ Kubernetes
 
 ::: slot tab-1-content-step-1
 ### Start the Control Plane
-After [downloading and installing Kuma](/install), you can start the control plane. Kuma automatically creates a `default` [Mesh](/docs/policies/#mesh):
+After [downloading and installing Kuma](/install/0.1.0), you can start the control plane. Kuma automatically creates a `default` [Mesh](/docs/0.1.0/policies/#mesh):
 :::
 
 ::: slot tab-1-code-block-step-1
@@ -95,13 +97,13 @@ You can now deploy your services, which will be automatically injected with a Ku
 
 ::: slot tab-1-code-block-step-2
 ```sh
-kubectl apply -f https://kuma.io/sample-service.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/Kong/kuma/master/examples/kubernetes/sample-service.yaml
 ```
 :::
 
 ::: slot tab-1-content-step-3
 ### Apply Policies
-You can now apply [Policies]() like Mutual TLS to encrypt the communication within the Mesh. Congratulations! You have secured your Service Mesh!
+You can now apply [Policies](/docs/0.1.0/policies) like Mutual TLS to encrypt the communication within the Mesh. Congratulations! You have secured your Service Mesh!
 :::
 
 ::: slot tab-1-code-block-step-3
@@ -125,7 +127,7 @@ Universal
 
 ::: slot tab-2-content-step-1
 ### Start the Control Plane
-After [downloading and installing Kuma](/install), you can start the control plane. Kuma automatically creates a `default` [Mesh](/docs/policies/#mesh):
+After [downloading and installing Kuma](/install/0.1.0), you can start the control plane. Kuma automatically creates a `default` [Mesh](/docs/0.1.0/policies/#mesh):
 :::
 
 ::: slot tab-2-code-block-step-1
@@ -161,7 +163,7 @@ $ KUMA_CONTROL_PLANE_BOOTSTRAP_SERVER_URL=http://127.0.0.1:5682 \
 
 ::: slot tab-2-content-step-3
 ### Apply Policies
-You can now apply [Policies]() like Mutual TLS to encrypt the communication within the Mesh. Congratulations! You have secured your Service Mesh!
+You can now apply [Policies](/docs/0.1.0/policies) like Mutual TLS to encrypt the communication within the Mesh. Congratulations! You have secured your Service Mesh!
 :::
 
 ::: slot tab-2-code-block-step-3

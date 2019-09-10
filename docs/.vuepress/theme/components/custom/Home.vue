@@ -17,7 +17,7 @@
               Install
             </router-link>
             <router-link
-              to="/docs/" 
+              to="#why-kuma" 
               class="btn btn--hollow">
               Why {{ getSiteData.title }}?
             </router-link>
@@ -36,6 +36,15 @@
     <!-- .page-masthead-wrap -->
 
     <div class="product-features-wrap">
+
+      <div v-if="$page.frontmatter.newsLink && $page.frontmatter.newsTagline" class="inner newsbar-wrap">
+        <div class="newsbar">
+          <span class="newsbar__tag">News</span>
+          <p>
+            <a :href="$page.frontmatter.newsLink"> {{$page.frontmatter.newsTagline}} <span class="newsbar__arrow">&rarr;</span></a>
+          </p>
+        </div>
+      </div>
 
       <div class="inner product-features flex flex-wrap -mx-4">
         <Content slot-key="feature-block-content-1" class="product-features__item w-full md:w-1/3 px-4"/>
@@ -140,6 +149,10 @@
         </ol>
       </div> -->
       <!-- .steps-items -->
+
+      <div id="why-kuma">
+        <!-- Why Kuma anchor -->
+      </div>
 
     </div>
     <!-- .steps-wrap -->
