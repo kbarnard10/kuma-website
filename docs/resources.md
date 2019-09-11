@@ -5,11 +5,6 @@ title: Resources
 
 # Resources
 
-
-version: %%v%%
-
-[link](/docs/%%v%%/thing/)
-
 ## Logo
 ![](/images/resources/kuma-logo-1024x415@2x.jpg)
 
