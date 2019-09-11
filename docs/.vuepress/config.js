@@ -3,6 +3,7 @@
  */
 const LatestSemver = require('latest-semver')
 const releases = require('./public/releases.json')
+const latestVersion = LatestSemver(releases)
 
 /**
  * Product data
@@ -27,7 +28,7 @@ module.exports = {
   // theme configuration
   themeConfig: {
     domain: productData.hostname,
-    latestVer: LatestSemver(releases),
+    latestVer: latestVersion,
     twitter: productData.twitter,
     author: productData.author,
     repo: productData.repo,
@@ -82,7 +83,15 @@ module.exports = {
   markdown: {
     lineNumbers: true,
     extendMarkdown: md => {
+      // include files in markdown
       md.use(require("markdown-it-include"), "./docs/.partials/")
+
+      // this replaces %%v%% with the latest version on strings but 
+      // not within links. using the token within a link
+      // causes RouterLink to throw a 'malformed URI' error
+      md.use(require("markdown-it-for-inline"), 'version_replace', 'text', (tokens, idx) => {
+        tokens[idx].content = tokens[idx].content.replace(/%%v%%/g, latestVersion)
+      })
     }
   },
   plugins: {
