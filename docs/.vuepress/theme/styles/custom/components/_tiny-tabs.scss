@@ -8,20 +8,37 @@ $tinytabs-selected-tab-text-color: #333;
 $tinytabs-tab-section-bg: #000;
 $tinytabs-tab-section-padding: 1rem;
 $tinytabs-tab-section-radius: 3px;
+$tinytabs-bottom-border: 5px solid rgba(#000, .4);
 
 .tinytabs {
 
   // tabs
   .tabs {
+    position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;  
     margin: 0 0 2rem 0;
-    // border-bottom: 5px solid rgba(#000, .4);
+    // border-bottom: $tinytabs-bottom-border;
+
+    &:after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      z-index: 0;
+      display: block;
+      content: "";
+      height: 1.5rem;
+      width: 105%;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, rgba(#000, .15), rgba(#000, 0));
+    }
   }
 
   // individual tab
   .tab {
+    position: relative;
+    z-index: 1;
     display: block;
     text-decoration: none;
     font-family: $base-font-family;
@@ -29,10 +46,33 @@ $tinytabs-tab-section-radius: 3px;
     font-size: 1.2rem;
     color: #fff;
     background-color: rgba(#000, .4);
-    margin: 0 .5rem 0 0;
-    padding: .2rem 1.5rem;
-    // border-radius: 3px 3px 0 0;
-    border-radius: 3px;
+    margin: 0 .5rem;
+    padding: .25rem 2.25rem;
+    border-radius: 5px 5px 0 0;
+    transition: background 250ms ease, color 250ms ease;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:after {
+      $i: .8rem;
+
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      z-index: 0;
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      transition: opacity 250ms ease;
+      opacity: 0;
+      transform: translateX(-50%) translateY(calc(100% - #{$i}));
+      border-left: $i solid transparent;
+      border-right: $i solid transparent;
+      border-top: $i solid $green-base;
+    }
 
     > * {
       padding: 0;
@@ -51,6 +91,12 @@ $tinytabs-tab-section-radius: 3px;
     // selected tab
     &.sel {
       background-color: $green-base;
+      // border-bottom: 5px solid $green-base;
+      // margin-bottom: -5px;
+
+      &:after {
+        opacity: 1;
+      }
     }
   }
 
@@ -62,6 +108,8 @@ $tinytabs-tab-section-radius: 3px;
     clear: both;
     // border-radius: $tinytabs-tab-section-radius;
     font-size: .85rem;
+    // border-bottom: $tinytabs-bottom-border;
+    // padding-bottom: 1rem;
 
     a {
       color: inherit;
